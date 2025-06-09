@@ -84,7 +84,7 @@ Right-click the tray icon to open the menu:
 
 ## 🧑‍💻 License
 
-MIT License – free to use, modify, and distribute.
+GPL-3.0 license – free to use, modify, and distribute.
 
 ---
 
