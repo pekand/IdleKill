@@ -23,11 +23,11 @@ ArchitecturesAllowed=x64compatible
 ; the 64-bit view of the registry.
 ArchitecturesInstallIn64BitMode=x64compatible
 DisableProgramGroupPage=yes
-LicenseFile=C:\Documents\Projects\sandbox\IdleKill\LICENSE
+LicenseFile=c:\Documents\Projects\github\apps\IdleKill\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
 OutputBaseFilename=IdleKill
-SetupIconFile=C:\Documents\Projects\sandbox\IdleKill\IdleKill\resources\IdleKill.ico
+SetupIconFile=c:\Documents\Projects\github\apps\IdleKill\IdleKill\resources\IdleKill.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -38,8 +38,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Documents\Projects\sandbox\IdleKill\IdleKill\bin\x64\Release\net9.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Documents\Projects\sandbox\IdleKill\IdleKill\bin\x64\Release\net9.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "c:\Documents\Projects\github\apps\IdleKill\IdleKill\bin\x64\Release\net9.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "c:\Documents\Projects\github\apps\IdleKill\IdleKill\bin\x64\Release\net9.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
