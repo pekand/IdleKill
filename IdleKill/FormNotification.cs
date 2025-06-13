@@ -15,12 +15,29 @@ namespace IdleKill
     {
         private System.Windows.Forms.Timer autoCloseTimer;
         private Action callback = null;
+        public SoundPlayer player = null;
+        public string beepSoundFile = null;
 
-        SoundPlayer player = new SoundPlayer(Properties.Resources.beep);
 
-        public FormNotification(Action callback)
+        public FormNotification(Action callback, string beepSoundFile = null)
         {
-            InitializeComponent();
+            if (beepSoundFile == null || !File.Exists(beepSoundFile))
+            {
+                player = new SoundPlayer(Properties.Resources.beep);
+            }
+            else {
+                try
+                {
+                    player = new SoundPlayer(beepSoundFile);
+                }
+                catch (Exception)
+                {
+                    player = new SoundPlayer(Properties.Resources.beep);
+                }
+                
+            }
+
+                InitializeComponent();
             SetupForm();
             ShowInCorner();
             StartAutoCloseTimer();

@@ -43,6 +43,7 @@
             timer = new System.Windows.Forms.Timer(components);
             textBox = new TextBox();
             button = new Button();
+            selectBeepSoundToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,62 +59,62 @@
             // 
             contextMenuStrip.Items.AddRange(new ToolStripItem[] { setIntervalToolStripMenuItem, optionsToolStripMenuItem, exitToolStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new Size(147, 76);
+            contextMenuStrip.Size = new Size(181, 98);
             contextMenuStrip.Opening += contextMenuStrip_Opening;
             // 
             // setIntervalToolStripMenuItem
             // 
             setIntervalToolStripMenuItem.Name = "setIntervalToolStripMenuItem";
-            setIntervalToolStripMenuItem.Size = new Size(146, 24);
+            setIntervalToolStripMenuItem.Size = new Size(180, 24);
             setIntervalToolStripMenuItem.Text = "Set interval";
             setIntervalToolStripMenuItem.Click += setIntervalToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem
             // 
-            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hibernateToolStripMenuItem, sleepToolStripMenuItem, autorunToolStripMenuItem1, viewLogToolStripMenuItem, clearLogFileToolStripMenuItem });
+            optionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { hibernateToolStripMenuItem, sleepToolStripMenuItem, autorunToolStripMenuItem1, viewLogToolStripMenuItem, clearLogFileToolStripMenuItem, selectBeepSoundToolStripMenuItem });
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(146, 24);
+            optionsToolStripMenuItem.Size = new Size(180, 24);
             optionsToolStripMenuItem.Text = "Options";
             // 
             // hibernateToolStripMenuItem
             // 
             hibernateToolStripMenuItem.Name = "hibernateToolStripMenuItem";
-            hibernateToolStripMenuItem.Size = new Size(153, 24);
+            hibernateToolStripMenuItem.Size = new Size(189, 24);
             hibernateToolStripMenuItem.Text = "Hibernate";
             hibernateToolStripMenuItem.Click += hibernateToolStripMenuItem_Click;
             // 
             // sleepToolStripMenuItem
             // 
             sleepToolStripMenuItem.Name = "sleepToolStripMenuItem";
-            sleepToolStripMenuItem.Size = new Size(153, 24);
+            sleepToolStripMenuItem.Size = new Size(189, 24);
             sleepToolStripMenuItem.Text = "Sleep";
             sleepToolStripMenuItem.Click += sleepToolStripMenuItem_Click;
             // 
             // autorunToolStripMenuItem1
             // 
             autorunToolStripMenuItem1.Name = "autorunToolStripMenuItem1";
-            autorunToolStripMenuItem1.Size = new Size(153, 24);
+            autorunToolStripMenuItem1.Size = new Size(189, 24);
             autorunToolStripMenuItem1.Text = "Autorun";
             autorunToolStripMenuItem1.Click += autorunToolStripMenuItem1_Click;
             // 
             // viewLogToolStripMenuItem
             // 
             viewLogToolStripMenuItem.Name = "viewLogToolStripMenuItem";
-            viewLogToolStripMenuItem.Size = new Size(153, 24);
+            viewLogToolStripMenuItem.Size = new Size(189, 24);
             viewLogToolStripMenuItem.Text = "View log";
             viewLogToolStripMenuItem.Click += viewLogToolStripMenuItem_Click;
             // 
             // clearLogFileToolStripMenuItem
             // 
             clearLogFileToolStripMenuItem.Name = "clearLogFileToolStripMenuItem";
-            clearLogFileToolStripMenuItem.Size = new Size(153, 24);
+            clearLogFileToolStripMenuItem.Size = new Size(189, 24);
             clearLogFileToolStripMenuItem.Text = "Clear log file";
             clearLogFileToolStripMenuItem.Click += clearLogFileToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(146, 24);
+            exitToolStripMenuItem.Size = new Size(180, 24);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -142,6 +143,13 @@
             button.Text = "Set";
             button.UseVisualStyleBackColor = true;
             button.Click += button_Click;
+            // 
+            // selectBeepSoundToolStripMenuItem
+            // 
+            selectBeepSoundToolStripMenuItem.Name = "selectBeepSoundToolStripMenuItem";
+            selectBeepSoundToolStripMenuItem.Size = new Size(189, 24);
+            selectBeepSoundToolStripMenuItem.Text = "Select beep sound";
+            selectBeepSoundToolStripMenuItem.Click += selectBeepSoundToolStripMenuItem_Click;
             // 
             // FormIdle
             // 
@@ -176,5 +184,6 @@
         private ToolStripMenuItem autorunToolStripMenuItem1;
         private ToolStripMenuItem viewLogToolStripMenuItem;
         private ToolStripMenuItem clearLogFileToolStripMenuItem;
+        private ToolStripMenuItem selectBeepSoundToolStripMenuItem;
     }
 }

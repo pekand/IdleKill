@@ -2,7 +2,6 @@ using Microsoft.Win32;
 using System.Diagnostics;
 using System.Media;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -15,6 +14,7 @@ namespace IdleKill
         public bool isLocked = false;
         public bool sleep = true;
         public bool hibernate = false;
+        public string beepSoundFile = null;
 
         [StructLayout(LayoutKind.Sequential)]
         struct LASTINPUTINFO
@@ -63,6 +63,7 @@ namespace IdleKill
         private void FormIdle_Load(object sender, EventArgs e)
         {
             this.Hide();
+            this.WindowState = FormWindowState.Normal;
         }
 
 
@@ -110,11 +111,12 @@ namespace IdleKill
                     notification = new FormNotification(() =>
                     {
                         this.notification = null;
-                    });
+                    }, beepSoundFile);
                     notification.Show();
                 }
             }
-            else {
+            else
+            {
                 if (notification != null)
                 {
                     notification.Close();
@@ -208,7 +210,8 @@ namespace IdleKill
             var xml = new XElement("Config",
                          new XElement("time", SecLimit),
                          new XElement("hibernate", hibernate ? "1" : "0"),
-                         new XElement("sleep", sleep ? "1" : "0")
+                         new XElement("sleep", sleep ? "1" : "0"),
+                         new XElement("beepSoundFile", beepSoundFile != null && File.Exists(beepSoundFile) ? beepSoundFile : "")
             );
 
             xml.Save(GetConfigPath());
@@ -229,6 +232,11 @@ namespace IdleKill
                 SecLimit = int.Parse(xml.Element("time")?.Value ?? "1200");
                 hibernate = (xml.Element("hibernate")?.Value ?? "0") == "1";
                 sleep = (xml.Element("sleep")?.Value ?? "0") == "1";
+                beepSoundFile = xml.Element("beepSoundFile")?.Value ?? "";
+
+                if (beepSoundFile != "" && !File.Exists(beepSoundFile)) {
+                    beepSoundFile = null;
+                }
 
                 Program.WriteAppLog("Config: SecLimit = " + SecLimit.ToString());
                 Program.WriteAppLog("Config: hibernate = " + hibernate.ToString());
@@ -301,13 +309,14 @@ namespace IdleKill
                 workingArea.Left + (workingArea.Width - this.Width) / 2,
                 workingArea.Top + (workingArea.Height - this.Height) / 2
             );
-
+            
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Show();
             this.TopMost = true;
             this.BringToFront();
             this.Activate();
             this.TopMost = false;
+            this.WindowState = FormWindowState.Normal;
         }
 
         // NOTIFIICON DBL CLICK
@@ -392,8 +401,22 @@ namespace IdleKill
         // CONTEXTMENU CLEAR LOG 
         private void clearLogFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
             File.WriteAllText(Program.logFilePath, string.Empty);
+        }
+
+        private void selectBeepSoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "WAV files (*.wav)|*.wav";
+                ofd.Title = "Select a WAV Sound File";
+
+                if (ofd.ShowDialog() == DialogResult.OK && File.Exists(ofd.FileName))
+                {
+                    beepSoundFile = ofd.FileName;
+                }
+            }
         }
     }
 }
